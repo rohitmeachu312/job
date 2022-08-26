@@ -1,0 +1,6 @@
+---
+- name: list file contents
+  hosts: all
+  tasks:
+    - name: list file content
+      command: cat /etc/passwd
