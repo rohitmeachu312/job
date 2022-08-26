@@ -1,5 +1,5 @@
 ---
-- name: list file contents
+- name: list file contents ##list
   hosts: all
   tasks:
     - name: list file content
