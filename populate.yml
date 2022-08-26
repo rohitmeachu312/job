@@ -1,0 +1,18 @@
+---
+
+- hosts: all
+  become: yes
+  tasks:
+    - name: install csh
+      yum:
+        state: present
+        name: csh
+    - name: Create required directory
+      file:
+        path: "/opt/backup"
+        state: directory
+    - name: populate required file
+      copy:
+        dest: /opt/backup/streams
+        content: |
+               {{ streams }}
