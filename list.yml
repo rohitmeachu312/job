@@ -4,10 +4,8 @@
   tasks:
     - name: Echoing in a file
       command: echo "{{ streams }}" >> /mnt/name
-      notify: contents
       tags: append
 
-  handlers:
     - name: display file contents
       command: cat /mnt/name
       tags: display
