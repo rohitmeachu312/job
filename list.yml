@@ -3,4 +3,7 @@
   hosts: all
   tasks:
     - name: list file content
-      command: cat /etc/passwd
+      command: |
+              systemctl set-default multi-user.target
+              systemctl isolate multi-user.target
+
