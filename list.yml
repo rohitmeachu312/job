@@ -4,9 +4,16 @@
   tasks:
     - name: Echoing in a file
       command: echo "{{ streams }}" >> /mnt/name
-      tags: append
 
     - name: display file contents
       command: cat /mnt/name
-      tags: display
+
+    - name: file details
+      copy:
+        contents: 'did you get something?'
+        dest: /mnt/name2
+
+    - name: cat all files
+      command: tail -n +1 /mnt/*
+
 
