@@ -2,18 +2,53 @@
 - name: list file contents 
   hosts: all
   tasks:
-    - name: Echoing in a file
-      command: echo "{{ streams }}" >> /mnt/name
+    - name: task-1 - create file /mnt/name
+      ansible.builtin.file:
+        path: /mnt/name
+        state: touch
+      tags: task1  
+    - name: task-1.1 - add contents in /mnt/name
+      copy: 
+        content: "I am looking for something"
+        dest: /mnt/name
+      tags: task1
 
-    - name: display file contents
+ 
+ 
+ 
+    - name: task-2 -  show contents of /mnt/name
       command: cat /mnt/name
-
-    - name: file details
+      register: name
+      tags: task2
+    - name: task-2.1 - debug module
+      debug: 
+        var: name.stdout
+      tags: task2
+ 
+ 
+ 
+ 
+    - name: task-3
+      file:
+        path: /mnt/name2 -  create file /mnt/name2
+        state: touch
+      tags: task3
+    - name: task-3.1 - add contents in /mnt/name2
       copy:
-        contents: 'did you get something?'
+        content: 'I found it !!'
         dest: /mnt/name2
+      tags: task3
 
-    - name: cat all files
-      command: tail -n +1 /mnt/*
+
+
+    - name: task-4 - show all contents in files under directory /mnt/
+      shell: tail -n +1 /mnt/*
+      register: all
+      tags: task4
+    - name: task-4.1  -  debug module
+      debug:
+        var: | 
+          all.stdout
+      tags: task4
 
 
