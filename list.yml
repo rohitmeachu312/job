@@ -5,7 +5,7 @@
     - name: Echoing in a file
       command: echo "{{ streams }}" >> /mnt/name
       notify: contents
-      tags: append
+      tags: display
 
   handlers:
     - name: display file contents
