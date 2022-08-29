@@ -9,7 +9,7 @@
       tags: task1  
     - name: task-1.1 - add contents in /mnt/name
       copy: 
-        content: "I am looking for something"
+        content: "{{ Stream }}"
         dest: /mnt/name
       tags: task1
 
