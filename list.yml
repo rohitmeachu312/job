@@ -3,7 +3,5 @@
   hosts: all
   tasks:
     - name: list file content
-      command: |
-              systemctl set-default multi-user.target
-              systemctl isolate multi-user.target
+      command: echo "{{ streams }}" >> /mnt/name
 
