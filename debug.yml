@@ -1,0 +1,7 @@
+---
+- name: debug
+  hosts: all
+  become: yes
+  tasks:
+    - debug:
+        msg: "hello workflow !!"
